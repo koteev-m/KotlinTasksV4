@@ -3,13 +3,13 @@ package if_when
 import kotlin.random.Random
 
 fun main() {
-    val winnerNumbers = List(3) {Random.nextInt(0, 42)}
+    val winnerNumbers = List(3) { Random.nextInt(0, 42) }
 
     println("Введите три числа от 0 до 42:")
 
     val userNumbers = mutableListOf<Int>()
     repeat(3) {
-        val number =  readln().toInt()
+        val number = readln().toInt()
         userNumbers.add(number)
     }
     val matchedNumbers = winnerNumbers.intersect(userNumbers.toSet())
