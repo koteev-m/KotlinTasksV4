@@ -9,16 +9,15 @@ fun main() {
 
     println("Регистрация прошла успешно. Войдите в систему.")
 
-    while (true) {
+    do {
         println("Введите логин:")
         val login = readln()
         println("Введите пароль:")
         val password = readln()
+    } while (
+        login != registeredLogin || password != registeredPassword
+    )
 
-        if (login == registeredLogin && password == registeredPassword) {
-            println("Авторизация прошла успешно")
-            break
-        }
-        else println("Неверный логин или пароль")
-    }
+    println("Авторизация прошла успешно!")
+
 }
