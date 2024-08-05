@@ -4,7 +4,7 @@ fun main() {
     println("Введите пять любых ингредиентов в одной строке через запятую(с пробелом)")
     val inputIngredients = readln()
 
-    val ingredients = inputIngredients.split(", ").toMutableList()
+    val ingredients = inputIngredients.split(", ")
     if (ingredients.size != 5) {
         println("Вы ввели неверное количество ингредиентов")
         return
