@@ -1,7 +1,7 @@
 package list
 
 fun main() {
-    val ingredients = mutableListOf<String>()
+    val ingredients = mutableSetOf<String>()
 
     while (ingredients.size < 5) {
         println("Введите название ингредиента:")
@@ -11,10 +11,10 @@ fun main() {
         }
     }
 
-    val sortedIngredients = ingredients.toList().sorted()
+    val sortedIngredients = ingredients.sorted().toMutableList()
 
     if (sortedIngredients.isNotEmpty()) {
-        sortedIngredients[0].replaceFirstChar { it.uppercase() }
+        sortedIngredients[0] = sortedIngredients[0].replaceFirstChar { it.uppercase() }
     }
 
     println(sortedIngredients.joinToString(", "))
