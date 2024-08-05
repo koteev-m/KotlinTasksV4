@@ -1,7 +1,5 @@
 package functions
 
-import kotlin.random.Random
-
 fun main() {
     val playerThrow = throwDice()
     println("Игрок выбросил: $playerThrow")
@@ -16,7 +14,7 @@ fun main() {
     }
 }
 
-fun throwDice(): Int = Random.nextInt(1, 6)
+fun throwDice(): Int = (1..6).random()
 
 
 
