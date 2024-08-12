@@ -8,23 +8,32 @@ fun main() {
     println("Сгенерированный пароль: $password")
 }
 
+fun generateSpecialChar(): Char {
+    val specialRanges = listOf(
+        33 .. 47,
+        58 .. 64,
+        91 .. 96,
+        123 .. 126,
+    )
+
+    val randomRange = specialRanges.random()
+    return(randomRange.random().toChar())
+}
+
 fun generatePassword(length: Int): String {
-    val digits = "0123456789"
-    val specialChars = """!"#$%&'()*+,-./ """
     val password = StringBuilder()
 
-    for (i in 0 until length) {
-        if (i % 2 == 0){
-            password.append(digits.random())
+    for (i in 0 until  length) {
+        val randomChar = if (i % 2 == 0) {
+            (48 .. 57).random().toChar()
         }
         else {
-            password.append(specialChars.random())
+            generateSpecialChar()
         }
+        password.append(randomChar)
     }
     return password.toString()
 }
-
-
 
 
 //Напиши программу, которая генерирует пароли. Пароль должен состоять из последовательно чередующихся цифр и специальных символов. Например, 4#4%2!.
