@@ -6,9 +6,14 @@ const val STORED_PASSWORD = "pass123"
 val cart = listOf("Apple", "Banana", "Orange")
 
 fun generateToken(): String {
-    val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    val digits = '0' .. '9'
+    val upperCase = 'A' .. 'Z'
+    val lowerCase = 'a' .. 'z'
+
+    val allChars = digits + upperCase + lowerCase
+
     return (1..32)
-        .map { chars.random() }
+        .map { allChars.random() }
         .joinToString("")
 }
 
@@ -42,7 +47,7 @@ fun main() {
         val userCart = getCart(token)
 
         if (userCart != null) {
-            println("Содержимое вашей корзины: $userCart")
+            println("Содержимое вашей корзины: ${userCart.joinToString()}")
         }
         else {
             println("Не удалось получить содержимое корзины.")
