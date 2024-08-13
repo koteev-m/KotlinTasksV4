@@ -8,27 +8,19 @@ fun main() {
     println("Сгенерированный пароль: $password")
 }
 
-fun generateSpecialChar(): Char {
-    val specialRanges = listOf(
-        33 .. 47,
-        58 .. 64,
-        91 .. 96,
-        123 .. 126,
-    )
-
-    val randomRange = specialRanges.random()
-    return(randomRange.random().toChar())
-}
 
 fun generatePassword(length: Int): String {
+    val charRange = ' '..'/'
+    val intRange = 0 .. 9
+
     val password = StringBuilder()
 
     for (i in 0 until  length) {
         val randomChar = if (i % 2 == 0) {
-            (48 .. 57).random().toChar()
+            intRange.random()
         }
         else {
-            generateSpecialChar()
+            charRange.random()
         }
         password.append(randomChar)
     }
