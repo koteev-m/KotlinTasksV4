@@ -17,7 +17,6 @@ fun main() {
 
 }
 
-
 class Participant(
     val nickName: String,
     val avatar: String,
