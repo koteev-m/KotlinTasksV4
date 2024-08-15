@@ -3,7 +3,7 @@ package NullSafett_NPE
 class Contact(
     val name: String,
     val phoneNumber: Long,
-    val company: String? = null
+    val company: String?
 )
 
 
