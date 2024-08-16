@@ -7,11 +7,7 @@ class Contact2(
 ) {
     fun printContactInfo(){
         val companyInfo = company ?: "<не указано>"
-        println("""
-            Имя: $name
-            Номер: $phoneNumber
-            Компания: $companyInfo
-        """.trimIndent())
+        println("-Имя: $name\n-Номер: $phoneNumber\n-Компания: $companyInfo")
     }
 }
 
