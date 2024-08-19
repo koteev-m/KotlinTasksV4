@@ -1,32 +1,35 @@
 package inheritance
 
 open class Liner(
+    val name: String,
     val speed: Int = 30,
     val passengerCapacity: Int = 3000,
     val cargoCapacity: Int = 1000,
 ) {
     open fun info() {
-        println("Лайнер: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
+        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
     }
 }
 
 class CargoShip(
+    name: String,
     speed: Int = 20,
     passengerCapacity: Int = 100,
     cargoCapacity: Int = 5000,
-) : Liner(speed, passengerCapacity, cargoCapacity) {
+) : Liner(name, speed, passengerCapacity, cargoCapacity) {
     override fun info() {
-        println("Грузовой корабль: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
+        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
     }
 }
 
 class Icebreaker(
+    name: String,
     speed: Int = 15,
     passengerCapacity: Int = 50,
     cargoCapacity: Int = 200,
-) : Liner(speed, passengerCapacity, cargoCapacity) {
+) : Liner(name, speed, passengerCapacity, cargoCapacity) {
     override fun info() {
-        println("Ледокол: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
+        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
     }
 
     fun breakIce() {
@@ -35,13 +38,13 @@ class Icebreaker(
 }
 
 fun main() {
-    val liner = Liner()
+    val liner = Liner("Лайнер")
     liner.info()
 
-    val cargoShip = CargoShip()
+    val cargoShip = CargoShip("Грузовой корабль")
     cargoShip.info()
 
-    val icebreaker = Icebreaker()
+    val icebreaker = Icebreaker("Ледокол")
     icebreaker.info()
     icebreaker.breakIce()
 }
