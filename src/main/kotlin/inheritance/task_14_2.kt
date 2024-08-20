@@ -2,9 +2,9 @@ package inheritance
 
 open class Liner2(
     val name: String,
-    val speed: Int = 30,
-    val passengerCapacity: Int = 3000,
-    val cargoCapacity: Int = 1000,
+    val speed: Int,
+    val passengerCapacity: Int,
+    val cargoCapacity: Int,
 ) {
     open fun info() {
         println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
@@ -14,32 +14,40 @@ open class Liner2(
     }
 }
 
+class PassengerLiner2(
+    name: String = "Пассажирский лайнер"
+) : Liner2(
+    name = name,
+    speed = 30,
+    passengerCapacity = 3000,
+    cargoCapacity = 1000,
+)
+
 class CargoShip2(
-    name: String,
-    speed: Int = 20,
-    passengerCapacity: Int = 100,
-    cargoCapacity: Int = 10000,
-) : Liner2(name, speed, passengerCapacity, cargoCapacity) {
-    override fun info () {
-        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
-    }
+    name: String = "Грузовой корабль"
+) : Liner2 (
+    name = name,
+    speed = 20,
+    passengerCapacity = 100,
+    cargoCapacity = 5000,
+) {
     override fun load() {
         println("$name активирует погрузочный кран")
     }
 }
 
-class IceBreaker2(
-    name: String,
-    speed: Int = 10,
-    passengerCapacity: Int = 50,
-    cargoCapacity: Int = 500,
-) : Liner2(name, speed, passengerCapacity, cargoCapacity) {
-    override fun info () {
-        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
-    }
+class Icebreaker2(
+    name: String = "Ледокол"
+) : Liner2 (
+    name = name,
+    speed = 15,
+    passengerCapacity = 50,
+    cargoCapacity = 70,
+) {
     fun breakIce() {
-        println("$name колет лед")
+        println("$name колет лёд")
     }
+
     override fun load() {
         println("$name открывает ворота со стороны кормы")
     }
@@ -47,15 +55,15 @@ class IceBreaker2(
 
 
 fun main() {
-    val liner = Liner2("Лайнер")
+    val liner = PassengerLiner2()
     liner.info()
     liner.load()
 
-    val cargoShip = CargoShip2("Грузовой корабль")
+    val cargoShip = CargoShip2()
     cargoShip.info()
     cargoShip.load()
 
-    val iceBreaker = IceBreaker2("Ледокол")
+    val iceBreaker = Icebreaker2()
     iceBreaker.info()
     iceBreaker.load()
     iceBreaker.breakIce()
