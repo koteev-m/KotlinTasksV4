@@ -2,49 +2,54 @@ package inheritance
 
 open class Liner(
     val name: String,
-    val speed: Int = 30,
-    val passengerCapacity: Int = 3000,
-    val cargoCapacity: Int = 1000,
+    val speed: Int,
+    val passengerCapacity: Int,
+    val cargoCapacity: Int,
 ) {
     open fun info() {
         println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
     }
 }
 
+class PassengerLiner(
+    name: String = "Пассажирский лайнер"
+) : Liner(
+    name = name,
+    speed = 30,
+    passengerCapacity = 3000,
+    cargoCapacity = 1000,
+)
+
 class CargoShip(
-    name: String,
-    speed: Int = 20,
-    passengerCapacity: Int = 100,
-    cargoCapacity: Int = 5000,
-) : Liner(name, speed, passengerCapacity, cargoCapacity) {
-    override fun info() {
-        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
-    }
-}
+    name: String = "Грузовой корабль"
+) : Liner (
+    name = name,
+    speed = 20,
+    passengerCapacity = 100,
+    cargoCapacity = 5000,
+)
 
 class Icebreaker(
-    name: String,
-    speed: Int = 15,
-    passengerCapacity: Int = 50,
-    cargoCapacity: Int = 200,
-) : Liner(name, speed, passengerCapacity, cargoCapacity) {
-    override fun info() {
-        println("$name: скорость $speed узлов, пассажировместимость $passengerCapacity, грузоподъемность $cargoCapacity тонн")
-    }
-
+    name: String = "Ледокол"
+) : Liner (
+    name = name,
+    speed = 15,
+    passengerCapacity = 50,
+    cargoCapacity = 70,
+) {
     fun breakIce() {
-        println("Ледокол колет лёд")
+        println("$name колет лёд")
     }
 }
 
 fun main() {
-    val liner = Liner("Лайнер")
-    liner.info()
+    val passengerLiner = PassengerLiner()
+    val cargoShip = CargoShip()
+    val iceBreaker = Icebreaker()
 
-    val cargoShip = CargoShip("Грузовой корабль")
+    passengerLiner.info()
     cargoShip.info()
+    iceBreaker.info()
 
-    val icebreaker = Icebreaker("Ледокол")
-    icebreaker.info()
-    icebreaker.breakIce()
+    iceBreaker.breakIce()
 }
