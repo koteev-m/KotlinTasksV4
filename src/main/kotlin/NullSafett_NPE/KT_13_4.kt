@@ -3,11 +3,10 @@ package NullSafett_NPE
 class Contact4(
     val name: String,
     val phoneNumber: Long,
-    val company: String?
+    val company: String? = null
 ) {
     fun printContactInfo(){
-        val companyInfo = company ?: "<не указано>"
-        println("-Имя: $name\n-Номер: $phoneNumber\n-Компания: $companyInfo")
+        println("-Имя: $name\n-Номер: $phoneNumber\n-Компания: $company")
     }
 }
 
@@ -22,16 +21,14 @@ fun main() {
 
         println("Введите номер телефона:")
         val phoneNumber = readln().trim().toLongOrNull()
+
         if (phoneNumber == null) {
             println("Введите номер телефона или контакт не будет добавлен:")
             continue
         }
 
         println("Введите название компании:")
-        var company = readln().trim()
-        if (company.isEmpty()) {
-            company = null.toString()
-        }
+        val company = readln().trim().ifEmpty { null }
 
         val contact = Contact4(name, phoneNumber, company)
         phoneBook.add(contact)
